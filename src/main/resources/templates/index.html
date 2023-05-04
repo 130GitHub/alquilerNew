@@ -1,13 +1,14 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
-    <head th:replace="/fragments/head :: head" </head>
+    
+    <head th:replace="/fragments/head :: head"><link rel="icon" href="../static/img/logo.png"></head>
 
     <body class="textura">  
 
         <!-- comment -->
         <header class="hero">      
                 <div class="navbar">  
-                    <div><h2 class="nav__logo"><img th:src="@{../img/logo.png}" class="image"  width="30%" height="30%"/></h2></div>  
+                    <div><h2 class="nav__logo"><img th:src="@{../static/img/logo.png}" class="image"  width="30%" height="30%"/></h2></div>  
                     <div class="nav-links">   
                         <div class="nav-header">                         
                             <a th:href="@{/carritoAlquiler}">Omitir  X</a>

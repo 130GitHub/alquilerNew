@@ -17,7 +17,7 @@ body {
 
 
 .titulo h1 {
-  color: #ff6529; 
+  color: #63a2bd; 
   margin-top: 20%; 
  
   font-size: 100px;
@@ -231,7 +231,7 @@ z-index: 999;
 .izquierda {   
   background:  #cecece;
   opacity: 1;
-  background-image: url("../imagen/textura1.png");
+  background-image: url("../imagen/textura.png");
   background-repeat: no-repeat;
   height: 160vh;
   width: 50%;
@@ -362,7 +362,7 @@ p {
 
 #src-file1::before {
   border-radius: 12px;
-  content: "Subir foto";
+  content: "Subir foto.";
 }
 
 @media (min-width: 768px) {
