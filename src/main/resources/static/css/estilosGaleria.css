@@ -1,0 +1,303 @@
+/*
+Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
+Click nbfs://nbhost/SystemFileSystem/Templates/Other/CascadeStyleSheet.css to edit this template
+*/
+/* 
+    Created on : 02/05/2023, 14:07:49
+    Author     : Leo
+*/
+@import url("https://fonts.googleapis.com/css2?family=Righteous&family=Work+Sans:wght@100;300;400;600;800&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Urbanist:wght@300;400;500;700&display=swap");
+*{
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+   
+}
+h1{
+    text-align: center;
+    position: relative;
+    width: 80%;
+    margin: 50px auto;
+}
+body{
+    background-color: #000000;
+    background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url("../imagen/textura1.png") ;
+    
+}
+h1::before{
+    content: "";
+    display: block;
+    width: 100%;
+    height: 2px;
+    position: absolute;
+    background-color: black;
+    top: 50%;
+    z-index: -1;
+}
+
+.division{
+float: initial;
+}
+
+/*h1 span{
+  font-family: "Lora" sans-serif;
+  font-size: 70px;
+    color: #fa9e69;
+    padding: 0 15px;
+}*/
+
+.img-gallery{
+    width: 80%;
+    margin: 50px auto 50px;
+    display: grid;
+    grid-template-columns: repeat(auto-fit,minmax(240px,1fr));
+    gap: 30px;
+}
+.img-gallery img{
+    width: 100%;
+    cursor: pointer;
+    transition: 1s;
+}
+.img-gallery img:hover{
+    transform: scale(1.2);
+}
+.ful-img{
+    width: 100%;
+    height: 100vh;
+    background-color: rgba(0, 0,0, 0.9);
+    position: fixed;
+    top: 60px;
+    left: 0px;
+    display: none;
+    align-items: center;
+    justify-content: center;
+    z-index: 99;
+
+}
+.ful-img span{
+    position: absolute;
+    top: 5%;
+    right: 5%;
+    font-size: 20px;
+    color: #fff;
+    cursor: pointer;
+}
+.ful-img img{
+    width: 90%;
+    max-width: 600px;
+}
+@media screen and (max-width:400px){
+    h1{
+        text-decoration: underline;
+    }
+    h1::before{
+        display: none;
+    }
+    h1 span{
+        padding: 0;
+    }
+}
+
+/*MENU NAV*/
+ 
+.hero {
+    
+    background: rgba(0, 0, 0, 0.575);  
+    color: #fff;
+    display: grid;
+    grid-template-rows: max-content 1fr;
+    grid-template-areas:
+      "nav"
+      "content";   
+    width: 100%;
+    margin-top: 0px;
+    position: fixed;
+  z-index: 999;
+  }
+  
+  .nav__logo {
+  
+    font-size: 2rem;
+    font-weight: 300px;
+    font-family: "Lora", sans-serif;
+  }
+  
+  .navbar {    
+    grid-area: nav;
+    display: grid;
+    justify-content: space-between;
+    grid-auto-flow: column;
+    gap: 1em;
+    align-items: center;
+    padding: 5px 30px;
+    
+  }
+  
+  .navbar .nav-header {
+    margin: auto;
+    display: inline;
+  }
+  .navbar .nav-header .nav-logo {
+    display: inline-block;
+    margin-top: -7px;
+  }
+  .navbar .nav-links {
+    display: inline;
+    float: right;
+    font-size: 5px;
+  }
+  
+  /*Tipografia menu*/
+  .navbar .nav-links a {
+    font-family: "Lato", sans-serif;
+    padding: 20px 12px;
+    text-decoration: none;
+    color: white;
+    border-radius: 6px;
+    font-size: 16px;
+  }
+  /* Hover effects */
+  .navbar .nav-links a:hover {
+    background-color: #fa9e69;
+    border-radius: 6px;
+  }
+  
+  /* responsive navbar toggle button */
+  .navbar #nav-check,
+  .navbar .nav-btn {
+    display: none;
+  }
+  
+  @media (max-width: 700px) {
+  
+    .navbar{
+      background-color: #94999c;
+    }
+    .nav__logo{
+      z-index: 2000;
+    }
+    .navbar #nav-check:checked ~ .nav-links {
+      height: calc(100vh - 70px);
+      overflow-y: auto;
+      
+    }
+    .navbar .nav-btn {
+      display: inline-block;
+      position: absolute;
+      top: 0px;
+      right: 0px;
+      
+    }
+    /*Icono Hamburguesa*/
+    .navbar .nav-btn label {
+      display: inline-block;  
+      width: 80px;
+      height: 70px;
+      padding: 25px;
+    }
+  
+    /*Color lineas hamburguesa*/
+   
+    .navbar .nav-btn label:hover,
+    .navbar #nav-check:checked ~ .nav-btn label {
+      transition: all 0.5s ease;
+    }
+    /* Color fondo Menu Hamburguesa*/
+    .navbar .nav-links {
+      position: absolute;
+      display: block;
+      text-align: center;
+      justify-content: center;
+      width: 100%;
+      background-color: #94999c;
+      transition: all 0.3s ease-in;
+      overflow-y: hidden;
+      top: 70px;
+      right: 0px;
+      border-radius: 6px;
+    }
+    .navbar .nav-links a {
+      display: block;
+    }
+  
+    /* when nav toggle button not checked */
+    .navbar #nav-check:not(:checked) ~ .nav-links {
+      height: 0px;
+    }
+  
+    /* when nav toggle button is checked */
+    .navbar #nav-check:checked ~ .nav-links {
+      height: calc(100vh - 70px);
+      overflow-y: auto;
+    }
+  
+    .navbar .nav-links .loginBtn {
+      padding: 10px 40px;
+      margin: 20px;
+      font-size: 14px;
+      font-family: "Urbanist", sans-serif;
+      color: rgb(255, 255, 255);
+    }
+    /* Responsive dropdown code */
+    .navbar .nav-links .dropdown,
+    .navbar .nav-links .dropdown2 {
+      float: none;
+      width: 100%;
+    }
+    .navbar .nav-links .drop-content,
+    .navbar .nav-links .drop-content2 {
+      position: relative;
+      background-color: #858b8f;
+      top: 0px;
+      left: 0px;
+    }
+    /* Text color sub menu Hamburguesa */
+    .navbar .nav-links .drop-content a {
+      color: rgb(255, 255, 255);
+    }
+  }
+  
+  /* Dropdown menu CSS code */
+  .dropdown {
+    position: relative;
+    display: inline-block;
+  }
+  .drop-content,
+  .drop-content2 {
+    display: none;
+    position: absolute;
+    background-color: #9ea3a7;
+    border-radius: 6px;
+    min-width: 120px;
+    font-size: 16px;
+    font-family: "Urbanist", sans-serif;
+    top: 34px;
+  }
+  /* on hover show dropdown */
+  .dropdown:hover .drop-content,
+  .dropdown2:hover .drop-content2 {
+    display: block;
+  }
+  /* Color lineas links */
+  .drop-content a {
+    padding: 12px 10px;
+    border-bottom: 1px solid #757c81;
+    display: block;
+    transition: all 0.5s ease !important;
+  }
+  .dropBtn .drop-content a:hover {
+    background-color: rgb(250, 158, 102) ;
+  }
+  .dropdown:hover .dropBtn,
+  .dropdown2:hover .dropBtn2 {
+    background-color: rgb(250, 158, 102) ;
+  }
+  .dropdown2 .drop-content2 {
+    position: absolute;
+    left: 120px;
+    top: 126px;
+  }
+  .dropBtn2 i {
+    margin-left: 15px;
+  }

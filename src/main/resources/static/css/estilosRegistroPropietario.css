@@ -363,7 +363,7 @@ p {
 
 #src-file1::before {
   border-radius: 12px;
-  content: "Subir foto.";
+  content: "Subir foto";
 }
 
 @media (min-width: 768px) {

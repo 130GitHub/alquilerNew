@@ -4,15 +4,18 @@
  */
 package com.eggprojectofinalintegrador.alquileresdequinchosparafiestas.controladores;
 
-import com.eggprojectofinalintegrador.alquileresdequinchosparafiestas.Servicios.UsuarioServicio;
+import com.eggprojectofinalintegrador.alquileresdequinchosparafiestas.servicios.UsuarioServicio;
 import com.eggprojectofinalintegrador.alquileresdequinchosparafiestas.entidades.Usuario;
+import com.eggprojectofinalintegrador.alquileresdequinchosparafiestas.entidades.UsuarioDTO;
 import com.eggprojectofinalintegrador.alquileresdequinchosparafiestas.excepciones.MiException;
+import com.eggprojectofinalintegrador.alquileresdequinchosparafiestas.servicios.UserPropietarioServicio;
 import javax.servlet.http.HttpSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -29,6 +32,9 @@ public class PortalControlador {
     @Autowired
     private UsuarioServicio usuarioServicio;
 
+    @Autowired
+    private UserPropietarioServicio userPropietarioServicio;
+
 //*********************************************
 
     @GetMapping("/")
@@ -40,46 +46,42 @@ public class PortalControlador {
 
     @GetMapping("/galeriaAlquiler")
     public String inicioGaleria(ModelMap modelo){
+        
         return "galeriaAlquiler.html";
+        
     }
 
     @GetMapping("/carritoAlquiler")
     public String inicioApp(ModelMap modelo){
+        
         return "carritoAlquiler.html";
     }
 
     @GetMapping("/registrarPropietario")
-    public String registrar(){
+    public String registrar(){//la vista que vamos a renderizar
         
-        return "registroPropietario.html";
+        return "registroPropietario.html";//formulario para registro
         
     }
 
-    @PostMapping("/registroPropietario")
-    public String registroPropietario(MultipartFile archivo, @RequestParam String apellido, @RequestParam String nombre, @RequestParam String dni, @RequestParam String email, @RequestParam String telefono, @RequestParam String descripcion, @RequestParam String password, String passwordR, ModelMap modelo){
+    @PostMapping(value="/registroPropietario")            
+    public String registroPropietario(@RequestParam(value = "archivo",required = false) MultipartFile[] archivos, @ModelAttribute UsuarioDTO usuarioDTO, ModelMap modelo)  throws MiException {
         
-        try {
-            usuarioServicio.registrarPropietario(archivo, apellido, nombre, dni, email, telefono, descripcion, password, passwordR);
+        try{
+            
+            userPropietarioServicio.registrarUserPropietario(archivos, usuarioDTO);
             modelo.put("exito","Usuario registrado correctamente");
             
             return "index.html";
             
-        } catch (MiException ex) {
+        }catch(MiException ex){
+            
             modelo.put("error", ex.getMessage());
             
-            modelo.put("apellido", apellido);
-            modelo.put("nombre", nombre);
-            modelo.put("dni", dni);
-            modelo.put("email", email);
-            modelo.put("telefono", telefono);
-            modelo.put("descripcion", descripcion);
-            
-           
             return "registroPropietario.html";
             
         }
-        
-    }
+    } 
 
     @GetMapping("/login")
     public String login(@RequestParam(required = false) String error, ModelMap modelo){
@@ -88,7 +90,6 @@ public class PortalControlador {
             modelo.put("error", "Usuario o Contraseña invalidos!");
         }
         
-        //return "login.html";
         return "iniciarSesion.html";
         
     }  
@@ -111,6 +112,6 @@ public class PortalControlador {
             return "galeriaAlquiler.html";
         }
         
-    }     
-
+    }      
+    
 }

@@ -5,13 +5,29 @@
 package com.eggprojectofinalintegrador.alquileresdequinchosparafiestas.servicios;
 
 import com.eggprojectofinalintegrador.alquileresdequinchosparafiestas.entidades.Imagen;
+import com.eggprojectofinalintegrador.alquileresdequinchosparafiestas.entidades.UserPropietario;
 import com.eggprojectofinalintegrador.alquileresdequinchosparafiestas.entidades.Usuario;
 import com.eggprojectofinalintegrador.alquileresdequinchosparafiestas.entidades.UsuarioDTO;
 import com.eggprojectofinalintegrador.alquileresdequinchosparafiestas.enumeraciones.Rol;
 import com.eggprojectofinalintegrador.alquileresdequinchosparafiestas.excepciones.MiException;
+import com.eggprojectofinalintegrador.alquileresdequinchosparafiestas.repositorios.UserPropietarioRepositorio;
+import com.eggprojectofinalintegrador.alquileresdequinchosparafiestas.repositorios.UsuarioRepositorio;
+import java.util.ArrayList;
+import java.util.List;
+import javax.servlet.http.HttpSession;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.GrantedAuthority;
+import org.springframework.security.core.authority.SimpleGrantedAuthority;
+import org.springframework.security.core.userdetails.User;
+import org.springframework.security.core.userdetails.UserDetails;
+import org.springframework.security.core.userdetails.UserDetailsService;
+import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
+import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.context.request.RequestContextHolder;
+import org.springframework.web.context.request.ServletRequestAttributes;
 import org.springframework.web.multipart.MultipartFile;
 
 /**
@@ -19,49 +35,54 @@ import org.springframework.web.multipart.MultipartFile;
  * @author Leo
  */
 @Service
-public class UsuarioServicio {//  implements UserDetailsService
+public class UserPropietarioServicio extends UsuarioServicio implements UserDetailsService {
     
-    //@Autowired
-    //private UsuarioRepositorio usuarioRepositorio;
-    
+    @Autowired
+    private UsuarioRepositorio usuarioRepositorio;
+
+    @Autowired
+    private UserPropietarioRepositorio userPropietarioRepositorio;
+
     @Autowired
     private ImagenServicio imagenServicio;
 
     /*
-    public Usuario registrarUsuario(MultipartFile archivo,Rol rol, String apellido, String nombre, String dni, String email, String telefono, String descripcion, String password, String passwordR) throws MiException{
-    */     
-
-    //@Transactional 
-    public Usuario registrarUsuario(MultipartFile[] archivo, UsuarioDTO usuarioDTO) throws MiException{
-            
-        //validar(apellido, nombre, email, telefono, password, passwordR);
+    public void registrarUserPropietario(MultipartFile archivo, String apellido, String nombre, String dni, String email, String telefono, String password, String passwordR) throws MiException{
+        super.registrarUsuario(archivo, Rol.ADMIN, apellido, nombre, dni, email, telefono, telefono, password, passwordR);
+        validar(apellido, nombre, email, telefono, password, passwordR);     
+    */
+    public void registrarUserPropietario(MultipartFile[] archivos, UsuarioDTO usuarioDTO) throws MiException{       
         
-        Usuario usuario=new Usuario();
+        validar(usuarioDTO.getPassword(), usuarioDTO.getPasswordR()); 
         
-            usuario.setRol(null);            
-            usuario.setApellido(usuarioDTO.getApellido());
-            usuario.setNombre(usuarioDTO.getNombre());
-            usuario.setDni(usuarioDTO.getDni());
-            usuario.setEmail(usuarioDTO.getEmail());
-            usuario.setTelefono(usuarioDTO.getTelefono());
+        UserPropietario uP=new UserPropietario();
+        /*USUARIO*/
+        uP.setApellido(usuarioDTO.getApellido());        
+        uP.setNombre(usuarioDTO.getNombre());
+        uP.setDni(usuarioDTO.getDni());
+        uP.setEmail(usuarioDTO.getEmail());
+        uP.setTelefono(usuarioDTO.getTelefono());
+        uP.setPassword(new BCryptPasswordEncoder().encode(usuarioDTO.getPassword()));
+        uP.setRol(Rol.PROPIETARIO);
 
-            usuario.setPassword(new BCryptPasswordEncoder().encode(usuarioDTO.getPassword()));
+        Imagen imagen=imagenServicio.guardar(archivos);
+        uP.setImagen(imagen);
 
-            usuario.setRol(Rol.PROPIETARIO);
+        uP.setAlta(true);
+        /*PROPIETARIO*/
+        uP.setCalificacion(0);        
 
-            Imagen imagen=imagenServicio.guardar(archivo);
+        userPropietarioRepositorio.save(uP);
 
-            usuario.setImagen(imagen);
-
-            usuario.setAlta(true);            
-        
-        //usuarioRepositorio.save(usuario);   
-        return usuario;
     }
 
-    /*
-    private void validar(String apellido, String nombre, String email, String telefono, String password, String passwordR) throws MiException{
-        if(apellido.isEmpty() || apellido==null){
+    private void autorizarReserva(String idReserva){
+
+    }
+    
+    
+    private void validar(String password, String passwordR) throws MiException{
+        /*if(apellido.isEmpty() || apellido==null){
             throw new MiException("El nombre no puede ser nulo o estar vacio");
         }        
         if(nombre.isEmpty() || nombre==null){
@@ -75,14 +96,13 @@ public class UsuarioServicio {//  implements UserDetailsService
         }
         if(password.isEmpty() || password==null || password.length()<=5){
             throw new MiException("La contraseña no puede ser nulo o estar vacio");
-        }       
+        }*/       
         if(!password.equals(passwordR)){
             throw new MiException("Las contraseñas no son iguales");
         }
-    }
-    */
+    }    
 
-    /*@Override
+    @Override
     public UserDetails loadUserByUsername(String email) throws UsernameNotFoundException {
         //throw new UnsupportedOperationException("Not supported yet."); 
         //To change body of generated methods, choose Tools | Templates.
@@ -109,6 +129,5 @@ public class UsuarioServicio {//  implements UserDetailsService
         }else{
             return null;
         }
-    }*/    
-
+    } 
 }

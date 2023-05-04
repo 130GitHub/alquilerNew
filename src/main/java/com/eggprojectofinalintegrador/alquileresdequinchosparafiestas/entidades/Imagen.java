@@ -9,7 +9,9 @@ import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
 import javax.persistence.Lob;
+import javax.persistence.ManyToOne;
 import org.hibernate.annotations.GenericGenerator;
 
 /**
@@ -30,6 +32,10 @@ public class Imagen {
     @Lob @Basic(fetch=FetchType.LAZY)
     private byte[] contendido;
 
+    @ManyToOne
+    @JoinColumn(name="propiedadid")
+    private Propiedad propiedad;
+    
     public Imagen() {
     }
 

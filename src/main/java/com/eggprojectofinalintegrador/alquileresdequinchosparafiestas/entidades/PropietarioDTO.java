@@ -6,29 +6,13 @@
 package com.eggprojectofinalintegrador.alquileresdequinchosparafiestas.entidades;
 
 import com.eggprojectofinalintegrador.alquileresdequinchosparafiestas.enumeraciones.Rol;
-import javax.persistence.Entity;
-import javax.persistence.EnumType;
-import javax.persistence.Enumerated;
-import javax.persistence.GeneratedValue;
-import javax.persistence.Id;
-import javax.persistence.Inheritance;
-import javax.persistence.InheritanceType;
-import javax.persistence.OneToOne;
-import org.hibernate.annotations.GenericGenerator;
 
 /**
  *
  * @author Leo
  */
-@Entity
-@Inheritance(strategy = InheritanceType.JOINED)////Herencia con Joined
-public class Usuario {
-    @Id
-    @GeneratedValue(generator="uuid")
-    @GenericGenerator(name="uuid", strategy="uuid2")
-    private String id;
-
-    //private String rol;
+public class PropietarioDTO {
+        
     private String apellido;
     private String nombre;    
     private String dni;
@@ -36,21 +20,13 @@ public class Usuario {
     private String telefono;
     private String password;
     private String passwordR;
+    private Rol rol;
+    private Imagen imagen; 
     
-    @Enumerated(EnumType.STRING)
-    private Rol rol;    
+    private int calificacion;    
     
-    @OneToOne////Mapeo de relaciones
-    private Imagen imagen;
-
-    private boolean alta;
-    
-    public Usuario() {
-    }
-
-    public Usuario(String id, String apellido, String nombre, String dni, String email, String telefono, String password, String passwordR, Rol rol, Imagen imagen, boolean alta) {
-        this.id = id;
-        
+    public PropietarioDTO(String apellido, String nombre, String dni, String email, String telefono, String password, String passwordR, Rol rol, boolean alta, int calificacion){
+        //super();
         this.apellido = apellido;
         this.nombre = nombre;
         this.dni = dni;
@@ -58,19 +34,20 @@ public class Usuario {
         this.telefono = telefono;
         this.password = password;
         this.passwordR = passwordR;
-        this.rol = rol;
-        this.imagen = imagen;
-        this.alta = alta;        
+        this.rol = rol;        
+        /* */
+        this.calificacion = calificacion;
+        
+    }   
+
+    public int getCalificacion() {
+        return calificacion;
     }
 
-    public String getId() {
-        return id;
+    public void setCalificacion(int calificacion) {
+        this.calificacion = calificacion;
     }
-
-    public void setId(String id) {
-        this.id = id;
-    }
-
+    /* */
     public String getApellido() {
         return apellido;
     }
@@ -134,22 +111,5 @@ public class Usuario {
     public void setRol(Rol rol) {
         this.rol = rol;
     }
-
-    public Imagen getImagen() {
-        return imagen;
-    }
-
-    public void setImagen(Imagen imagen) {
-        this.imagen = imagen;
-    }
-
-    public boolean isAlta() {
-        return alta;
-    }
-
-    public void setAlta(boolean alta) {
-        this.alta = alta;
-    }
-
     
 }

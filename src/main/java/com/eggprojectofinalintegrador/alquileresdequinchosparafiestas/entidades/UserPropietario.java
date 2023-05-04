@@ -4,13 +4,40 @@
  */
 package com.eggprojectofinalintegrador.alquileresdequinchosparafiestas.entidades;
 
+import com.eggprojectofinalintegrador.alquileresdequinchosparafiestas.enumeraciones.Rol;
 import java.io.Serializable;
-import java.util.List;
+import javax.persistence.Entity;
+import javax.persistence.PrimaryKeyJoinColumn;
 
 /**
  *
  * @author Leo
  */
-public class UserPropietario extends Usuario implements Serializable {
-    private List<Propiedad> propiedades;
+@Entity
+@PrimaryKeyJoinColumn(name = "propietario")//Herencia con Joined - mapeo
+public class UserPropietario extends Usuario implements Serializable {        
+             
+    private int calificacion;
+
+    public UserPropietario() { 
+        
+        super(); 
+        
+    }
+
+    public UserPropietario(String id, String apellido, String nombre, String dni, String email, String telefono, String password, String passwordR, Rol rol, Imagen imagen, boolean alta, int calificacion) {
+        
+        super(id, apellido, nombre, dni, email, telefono, password, passwordR, rol, imagen, alta);     
+        this.calificacion = calificacion;
+
+    }      
+    
+    public int getCalificacion() {
+        return calificacion;
+    }
+
+    public void setCalificacion(int calificacion) {
+        this.calificacion = calificacion;
+    }
+    
 }

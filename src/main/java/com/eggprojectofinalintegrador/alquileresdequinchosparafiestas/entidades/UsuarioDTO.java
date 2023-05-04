@@ -1,34 +1,16 @@
 /*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
+ * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
+ * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
 package com.eggprojectofinalintegrador.alquileresdequinchosparafiestas.entidades;
 
 import com.eggprojectofinalintegrador.alquileresdequinchosparafiestas.enumeraciones.Rol;
-import javax.persistence.Entity;
-import javax.persistence.EnumType;
-import javax.persistence.Enumerated;
-import javax.persistence.GeneratedValue;
-import javax.persistence.Id;
-import javax.persistence.Inheritance;
-import javax.persistence.InheritanceType;
-import javax.persistence.OneToOne;
-import org.hibernate.annotations.GenericGenerator;
 
 /**
  *
  * @author Leo
  */
-@Entity
-@Inheritance(strategy = InheritanceType.JOINED)////Herencia con Joined
-public class Usuario {
-    @Id
-    @GeneratedValue(generator="uuid")
-    @GenericGenerator(name="uuid", strategy="uuid2")
-    private String id;
-
-    //private String rol;
+public class UsuarioDTO {
     private String apellido;
     private String nombre;    
     private String dni;
@@ -36,21 +18,10 @@ public class Usuario {
     private String telefono;
     private String password;
     private String passwordR;
-    
-    @Enumerated(EnumType.STRING)
-    private Rol rol;    
-    
-    @OneToOne////Mapeo de relaciones
-    private Imagen imagen;
+    //private Rol rol;
+    //private Imagen imagen; 
 
-    private boolean alta;
-    
-    public Usuario() {
-    }
-
-    public Usuario(String id, String apellido, String nombre, String dni, String email, String telefono, String password, String passwordR, Rol rol, Imagen imagen, boolean alta) {
-        this.id = id;
-        
+    public UsuarioDTO(String apellido, String nombre, String dni, String email, String telefono, String password, String passwordR, Rol rol, Imagen imagen) {
         this.apellido = apellido;
         this.nombre = nombre;
         this.dni = dni;
@@ -58,17 +29,8 @@ public class Usuario {
         this.telefono = telefono;
         this.password = password;
         this.passwordR = passwordR;
-        this.rol = rol;
-        this.imagen = imagen;
-        this.alta = alta;        
-    }
-
-    public String getId() {
-        return id;
-    }
-
-    public void setId(String id) {
-        this.id = id;
+        //this.rol = rol;
+        //this.imagen = imagen;
     }
 
     public String getApellido() {
@@ -127,7 +89,7 @@ public class Usuario {
         this.passwordR = passwordR;
     }
 
-    public Rol getRol() {
+    /*public Rol getRol() {
         return rol;
     }
 
@@ -141,15 +103,5 @@ public class Usuario {
 
     public void setImagen(Imagen imagen) {
         this.imagen = imagen;
-    }
-
-    public boolean isAlta() {
-        return alta;
-    }
-
-    public void setAlta(boolean alta) {
-        this.alta = alta;
-    }
-
-    
+    }*/
 }

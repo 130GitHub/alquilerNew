@@ -4,7 +4,7 @@
 
     <body class="textura">  
 
-        <!<!-- comment -->
+        <!-- comment -->
         <header class="hero">      
                 <div class="navbar">  
                     <div><h2 class="nav__logo"><img th:src="@{../img/logo.png}" class="image"  width="30%" height="30%"/></h2></div>  
@@ -14,8 +14,18 @@
                         </div>
                     </div>                
                 </div>
-            </div>      
-        </header>   
+                
+        </header> 
+        <div class="row">
+                                    <div th:if="${errir != null}">
+                                        <h5>Error!!!</h5>
+                                        <p th:text="${error}"></p>
+                                    </div>
+                                    <div>
+                                        <h5 th:if="${exito != null}">Error!!!</h5>
+                                        <p th:text="${exito}"></p>
+                                    </div>
+                                </div>
     <div class="slider">
         <ul>
             <li>     
