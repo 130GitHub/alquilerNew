@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../static/css/estiloAdmin.css">
+    <link rel="icon" href="../static/img/logo.png">
+    <title>Admin</title>
+</head>
+<body>
+    <header class="cabecero">
+        <a href="iniciarSesion.html" class="logout">Cerrar Sesion</a>
+        <a href="#" class="admin">Administrar</a>
+
+            <select id="admin2" onchange="mostrar()">
+                <option value="posteo">Usuario.</option>
+                <option value="publico">Publicacion</option>
+                <option value="usuario">Posteo</option>
+            </select>
+    </header>
+    <div class="contenedor-title">
+        <h2 class="title">Usuarios</h2>
+    </div>
+
+    <div class="contenedor form">
+        <form action="form" class="form">
+            <input type="text" class="search" name="usuario" value="" placeholder="Buscar">
+            <input type="submit" class="btn" value="Buscar">
+        </form>
+    </div>
+    <div class="contenedor-opciones">
+
+        <div id="contenido1" style="visibility: hidden;">
+            <div class="registro-lista">
+                <div class="titulo-usu">
+                    <h3>Registro de usuario</h3>
+                </div>
+                <hr>
+                <div class="registro">
+                    <div class="id-post">ID</div>
+                    <div class="id-nombre">Nombre</div>
+                    <div class="id-tel">Telefono</div>
+                    <div class="id-correo">Correo</div>
+                    
+                </div>
+                <div class="registro">
+                    <div class="id-post">01</div>
+                    <div class="id-nombre">grupo 4</div>
+                    <div class="id-tel">1234567</div>
+                    <div class="id-correo">asdfg@asdf.com</div>
+                    <input type="submit" class="baja" value="Borrar">
+                    
+                </div>
+
+            </div>
+
+        </div>
+        
+        <div id="contenido2" style="visibility: hidden;">
+            <div class="registro-lista">
+                <div class="titulo-publi">
+                    <h3>Registro de publicaciones.</h3>
+                </div>
+                <hr>
+                <div class="registro">
+                    <div class="id-publi">ID</div>
+                    <div class="id-nombre">Nombre</div>
+                    <div class="id-tel">Telefono</div>
+                    <div class="id-correo">Correo</div>
+                    
+                    
+                </div>
+                <div class="registro">
+                    <div class="id-post">01</div>
+                    <div class="id-nombre">grupo 4</div>
+                    <div class="id-tel">1234567</div>
+                    <div class="id-correo">asdfg@asdf.com</div>         
+                </div>
+            </div>
+
+            <div class="lista-publicacion">
+                <p class="publi">Lorem ipsum dolor sit amet consectetur, adipisicing elit. 
+                    Blanditiis necessitatibus nisi odit modi voluptatum obcaecati possimus fuga. 
+                    Facilis, libero accusantium aliquid eum nostrum, nesciunt fugit, 
+                    illum quos maxime ab molestias.</p>
+                    <input type="submit" class="baja" value="Borrar">
+            </div>
+        </div>
+        <div>
+            <div class="registro"></div>
+        </div>
+        <div id="contenido3" style="visibility: hidden;">
+            <div class="registro-lista">
+                <div class="titulo-post">
+                    <h3>Registro de posteos.</h3>
+                </div>
+                <hr>
+                <div class="registro">
+                    <div class="id-usu">ID</div>
+                    <div class="id-nombre">Nombre</div>
+                    <div class="id-tel">Teléfono</div>
+                    <div class="id-correo">Correo</div>
+                </div>
+                
+                <div class="registro">
+                    <div class="id-post">01</div>
+                    <div class="id-nombre">grupo 4</div>
+                    <div class="id-tel">1234567</div>
+                    <div class="id-correo">asdfg@asdf.com</div>
+
+                    <div class="contenedor-foto">
+                        <img src="../static/img/casa1.jpg" width="100px" height="60px" alt="">
+                        <input type="submit" class="baja" value="Borrar">
+                    </div>
+                </div>
+            </div>
+
+           
+            
+        </div>
+        
+    </div>
+        
+        <script type="text/javascript" src="../static/js/AdminMostrar.js"></script>
+    </body>
+   
+    
+</html>
