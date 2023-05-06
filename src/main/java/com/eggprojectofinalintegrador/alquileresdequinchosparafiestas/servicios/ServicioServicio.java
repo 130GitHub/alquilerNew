@@ -22,8 +22,7 @@ public class ServicioServicio {
     public Servicio addServicio(ServicioDTO servicioDTO) throws MiException {
         
         Servicio servicio = new Servicio();
-
-        servicio.setDisponible(servicioDTO.isDisponible());
+        
         servicio.setNombre(servicioDTO.getNombre());
         servicio.setPrecio(servicioDTO.getPrecio());
 

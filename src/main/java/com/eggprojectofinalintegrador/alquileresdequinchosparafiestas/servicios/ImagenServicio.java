@@ -7,8 +7,10 @@ package com.eggprojectofinalintegrador.alquileresdequinchosparafiestas.servicios
 import com.eggprojectofinalintegrador.alquileresdequinchosparafiestas.entidades.Imagen;
 import com.eggprojectofinalintegrador.alquileresdequinchosparafiestas.excepciones.MiException;
 import com.eggprojectofinalintegrador.alquileresdequinchosparafiestas.repositorios.ImagenRepositorio;
+import java.util.HashSet;
 import java.util.List;
 import java.util.Optional;
+import java.util.Set;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.web.multipart.MultipartFile;
@@ -23,35 +25,35 @@ public class ImagenServicio {
     @Autowired
     private ImagenRepositorio imagenRepositorio;
 
-    public Imagen guardar(MultipartFile[] archivos) throws MiException {
-        if (archivos != null) {
-            try {
+    public Imagen guardar(MultipartFile archivo) throws MiException {
+        if (archivo != null) {
+            try {                
+                //Set<Imagen> imagenes = new HashSet<>();
                 
-                List<Imagen> imagenes;
-
-                // ejemplo de arreglo
-                
-                //...
-                for (int i = 0; i < archivos.length-1; i++){
+                //for (int i = 0; i < archivos.length-1; i++){
                     // aqui se puede referir al objeto con arreglo[i];
                     Imagen imagen = new Imagen();
                 
-                    imagen.setMime(archivos[i].getContentType());
+                    /*imagen.setMime(archivos[i].getContentType());
                     imagen.setNombre(archivos[i].getName());
-                    imagen.setContendido(archivos[i].getBytes());
+                    imagen.setContendido(archivos[i].getBytes());*/
+                    imagen.setMime(archivo.getContentType());
+                    imagen.setNombre(archivo.getName());
+                    imagen.setContendido(archivo.getBytes());
 
                     System.out.println("archivo no null");
 
-                    return imagenRepositorio.save(imagen);                    
-                }
+                    return imagenRepositorio.save(imagen);
+                    //imagenes.add(imagenRepositorio.save(imagen));
+                    //imagenRepositorio.save(imagen);                     
+               //}
 
+                //return imagenes;
                 
             } catch (Exception ex) {
                 System.err.println(">>" + ex.getMessage());
             }
-        } else {
-            System.out.println("archivo null");
-        }
+        } 
 
         return null;
     }

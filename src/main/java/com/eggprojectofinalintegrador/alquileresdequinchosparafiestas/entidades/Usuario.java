@@ -40,7 +40,7 @@ public class Usuario {
     @Enumerated(EnumType.STRING)
     private Rol rol;    
     
-    @OneToOne////Mapeo de relaciones
+    @OneToOne//Mapeo de relaciones
     private Imagen imagen;
 
     private boolean alta;

@@ -51,7 +51,7 @@ public class UserPropietarioServicio extends UsuarioServicio implements UserDeta
         super.registrarUsuario(archivo, Rol.ADMIN, apellido, nombre, dni, email, telefono, telefono, password, passwordR);
         validar(apellido, nombre, email, telefono, password, passwordR);     
     */
-    public void registrarUserPropietario(MultipartFile[] archivos, UsuarioDTO usuarioDTO) throws MiException{       
+    public void registrarUserPropietario(MultipartFile archivo, UsuarioDTO usuarioDTO) throws MiException{       
         
         validar(usuarioDTO.getPassword(), usuarioDTO.getPasswordR()); 
         
@@ -65,7 +65,7 @@ public class UserPropietarioServicio extends UsuarioServicio implements UserDeta
         uP.setPassword(new BCryptPasswordEncoder().encode(usuarioDTO.getPassword()));
         uP.setRol(Rol.PROPIETARIO);
 
-        Imagen imagen=imagenServicio.guardar(archivos);
+        Imagen imagen=imagenServicio.guardar(archivo);
         uP.setImagen(imagen);
 
         uP.setAlta(true);

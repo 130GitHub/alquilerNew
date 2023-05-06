@@ -7,6 +7,7 @@
 
         <!-- comment -->
         <header class="hero">      
+<<<<<<< HEAD
                 <div class="navbar">  
                     <div><h2 class="nav__logo"><img th:src="@{../static/img/logo.png}" class="image"  width="30%" height="30%"/></h2></div>  
                     <div class="nav-links">   
@@ -16,67 +17,78 @@
                     </div>                
                 </div>
                 
+=======
+            <div class="navbar">  
+                <div><h2 class="nav__logo"><img th:src="@{../img/logo.png}" class="image"  width="30%" height="30%"/></h2></div>  
+                <div class="nav-links">   
+                    <div class="nav-header">                         
+                        <a th:href="@{/carritoAlquiler}">Omitir  X</a>
+                    </div>
+                </div>                
+            </div>
+
+>>>>>>> feature/leo/login
         </header> 
         <div class="row">
-                                    <div th:if="${errir != null}">
-                                        <h5>Error!!!</h5>
-                                        <p th:text="${error}"></p>
-                                    </div>
-                                    <div>
-                                        <h5 th:if="${exito != null}">Error!!!</h5>
-                                        <p th:text="${exito}"></p>
-                                    </div>
-                                </div>
-    <div class="slider">
-        <ul>
-            <li>     
-                <div class="wrap">
-                    <div class="wrap-texto">
-                        <h1>Navega en la App</h1>
-                        <p> Regístrate o Inicia Sesión. </p>              
+            <div th:if="${errir != null}">
+                <h5>Error!!!</h5>
+                <p th:text="${error}"></p>
+            </div>
+            <div>
+                <h5 th:if="${exito != null}">Error!!!</h5>
+                <p th:text="${exito}"></p>
+            </div>
+        </div>
+        <div class="slider">
+            <ul>
+                <li>     
+                    <div class="wrap">
+                        <div class="wrap-texto">
+                            <h1>Navega en la App</h1>
+                            <p> Regístrate o Inicia Sesión. </p>              
+                        </div>
                     </div>
-                </div>
 
-            </li>
+                </li>
 
-            <li>
+                <li>
 
-                <div id="wrap1" class="wrap">
-                    <div class="wrap-texto">
-                        <h1>Alquileres de quinchos.</h1>
-                        <p> disfruta con tus amigos. </p>              
-                    </div>            
-                </div> 
+                    <div id="wrap1" class="wrap">
+                        <div class="wrap-texto">
+                            <h1>Alquileres de quinchos.</h1>
+                            <p> disfruta con tus amigos. </p>              
+                        </div>            
+                    </div> 
 
-            </li>
+                </li>
 
-            <li>
+                <li>
 
-                <div id="wrap2" class="wrap">
-                    <div class="wrap-texto">
-                        <h1>Celebra tus fiestas</h1>
-                        <p> Alquila un quincho. </p>              
-                    </div>            
-                </div> 
+                    <div id="wrap2" class="wrap">
+                        <div class="wrap-texto">
+                            <h1>Celebra tus fiestas</h1>
+                            <p> Alquila un quincho. </p>              
+                        </div>            
+                    </div> 
 
-            </li>
+                </li>
 
-            <li>         
-                <div id="wrap3" class="wrap">
-                    <div class="wrap-texto">
-                        <h1>¿Tienes un quincho?</h1>
-                        <p> Ponlo en alquiler. </p>              
+                <li>         
+                    <div id="wrap3" class="wrap">
+                        <div class="wrap-texto">
+                            <h1>¿Tienes un quincho?</h1>
+                            <p> Ponlo en alquiler. </p>              
+                        </div>
                     </div>
-                </div>
 
-            </li>
+                </li>
 
-        </ul>                  
-    </div>  
-
+            </ul>                  
+        </div>  
 
 
-</section>
+
+    </section>
 
 </section>
 

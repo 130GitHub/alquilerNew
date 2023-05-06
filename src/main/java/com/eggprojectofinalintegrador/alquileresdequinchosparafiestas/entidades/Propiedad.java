@@ -7,12 +7,12 @@ package com.eggprojectofinalintegrador.alquileresdequinchosparafiestas.entidades
 
 import java.util.HashSet;
 import java.util.Set;
-import javax.persistence.CascadeType;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
-import javax.persistence.JoinColumn;
 import javax.persistence.OneToMany;
+import javax.persistence.OneToOne;
 import org.hibernate.annotations.GenericGenerator;
 
 /**
@@ -29,24 +29,25 @@ public class Propiedad {
     private String titulo;    
     private String ubicacion;    
     private double precio;
-    private String propietario;
     
-    @OneToMany(cascade = CascadeType.ALL, orphanRemoval = true)
-    @JoinColumn(name = "propiedad_id") 
+    @OneToOne
+    private UserPropietario userPropietario;
+    
+    //@OneToMany(cascade = CascadeType.ALL, orphanRemoval = true)
+    //@JoinColumn(name = "propiedad_id") 
+    //@OneToMany(mappedBy = "propiedad")
+    @OneToMany(fetch = FetchType.LAZY, mappedBy = "propiedad")
     private Set<Servicio> servicios = new HashSet<>();
    
-    @OneToMany(mappedBy = "propiedad")    
+    //@OneToMany(mappedBy = "propiedad")  
+    //@JoinColumn(name = "propiedad_id") 
+    //private Set<Imagen> imagenes = new HashSet<>();
+    @OneToMany(fetch = FetchType.LAZY, mappedBy = "propiedad")
     private Set<Imagen> imagenes = new HashSet<>();
+    
+    private boolean alta;
 
     public Propiedad() {
-    }
-
-    public Propiedad(double precio, String propietario, Set<Servicio> servicios, Set<Imagen> imagenes) {
-        
-        this.precio = precio;
-        this.propietario = propietario;
-        this.servicios = servicios;
-        this.imagenes = imagenes;
     }
 
     public String getIdPropiedad() {
@@ -81,14 +82,14 @@ public class Propiedad {
         this.precio = precio;
     }
 
-    public String getPropietario() {
-        return propietario;
+    public UserPropietario getUserPropietario() {
+        return userPropietario;
     }
 
-    public void setPropietario(String propietario) {
-        this.propietario = propietario;
+    public void setUserPropietario(UserPropietario userPropietario) {
+        this.userPropietario = userPropietario;
     }
-
+    
     public Set<Imagen> getImagenes() {
         return imagenes;
     }
@@ -103,5 +104,13 @@ public class Propiedad {
 
     public void setServicios(Set<Servicio> servicios) {
         this.servicios = servicios;
+    }
+
+    public boolean isAlta() {
+        return alta;
+    }
+
+    public void setAlta(boolean alta) {
+        this.alta = alta;
     }
 }

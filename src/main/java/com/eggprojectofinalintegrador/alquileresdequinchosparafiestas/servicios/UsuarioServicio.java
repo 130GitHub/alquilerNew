@@ -32,7 +32,7 @@ public class UsuarioServicio {//  implements UserDetailsService
     */     
 
     //@Transactional 
-    public Usuario registrarUsuario(MultipartFile[] archivo, UsuarioDTO usuarioDTO) throws MiException{
+    public Usuario registrarUsuario(MultipartFile archivo, UsuarioDTO usuarioDTO) throws MiException{
             
         //validar(apellido, nombre, email, telefono, password, passwordR);
         

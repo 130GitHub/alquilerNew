@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
 
     <head>
         <meta charset="UTF-8" />
@@ -7,8 +7,7 @@
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
         <title>Perfil Propietario</title>
 
-        <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css"
-              integrity="sha384-AYmEC3Yw5cVb3ZcuHtOA93w35dYTsvhLPVnYs9eStHfGJvOvKxVfELGroGkvsg+p" crossorigin="anonymous" />
+        <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css" integrity="sha384-AYmEC3Yw5cVb3ZcuHtOA93w35dYTsvhLPVnYs9eStHfGJvOvKxVfELGroGkvsg+p" crossorigin="anonymous" />
         <link rel="stylesheet" href="../css/estiloPerfilPropietario.css" />
     </head>
 
@@ -87,9 +86,6 @@
             </div>
     </section>
 </header>
-
-
-
 
 <div class="wrapper">
 
@@ -281,10 +277,19 @@
 
 
                 <div id="tabla">
-                    <h1 class="heading-3"> Crear Detalle Propiedad: </h1>
+
+                    <div th:if="${errir != null}">
+                        <h5>Error!!!</h5>
+                        <p th:text="${error}"></p>
+                    </div>
+                    <div>
+                        <h5 th:if="${exito != null}">Error!!!</h5>
+                        <p th:text="${exito}"></p>
+                    </div>
+
+                    <h1 class="heading-3"> Publicar Nueva Propiedad </h1>
                     <form class="formulario">
                         <div class="contenedor" method="POST" action="">
-
 
                             <div class="input-contenedor">
                                 <i class="fa-solid fa-font"></i>
@@ -307,20 +312,20 @@
                                        placeholder="Precio del Alquiler:" required="true">
                             </div>
                             <br><br>
-
+                            <!-- comment 
                             <div class="input-contenedor">
                                 <i class="fa-regular fa-pen-to-square"></i>
                                 <input type="text" id="_descripcion" name="_descripciones" value=""
                                        placeholder="Descripción de Propiedad:" required="true">
                             </div>
                             <br><br>
-
+                            
                             <div class="input-contenedor">
                                 <i class="fas fa-envelope icon"></i>
                                 <input type="email" id="_email" name="_emails" value="" placeholder="Email:" required="true">
                             </div>
                             <br><br>
-
+                            -->
                             <div>
                                 <span id="imagen_subir">Agregar Fotos de la Propiedad:</span>
                                 <input type="file" class='fancy-file green' id="archivo3" name="avatar" accept="image/*" multiple />
@@ -328,8 +333,8 @@
                             <br><br>
 
                             <div>                                    
-                                <p>
-                                    Servicios Extras:<br>                                     
+                                <p>Servicios Extras:</p>
+                                <br>                                     
                             </div>
 
                             <!--Formulario check precio-->
@@ -339,14 +344,18 @@
                                         <input type="checkbox" id="choose1" name="i_like"  value="" >
                                         <label for="choose" style="font-family:Lato, sans-serif; font-size: 17px; padding: 10px; border: none;  background: rgba(255, 255, 255, 0.1);">Ornamentación:</label>                                         
                                         <input type="number" id="_precio" name="_precios" value="" placeholder="Precio:" min="1" required>
-
                                     </div>
 
                                     <div>
                                         <input type="checkbox" id="choose" name="i_like"  value="" required >
+                                        <label for="choose" id="choose2" style="font-family:Lato, sans-serif; font-size: 17px; padding: 10px; border: none;  background: rgba(255, 255, 255, 0.1);">Catering:</label>                                           
+                                        <input type="number" id="_precio" name="_precios" value="" placeholder="Precio:" min="1" required>
+                                    </div>
+                                    <div>
+                                        <input type="checkbox" id="choose" name="i_like"  value="" required >
                                         <label for="choose" id="choose2" style="font-family:Lato, sans-serif; font-size: 17px; padding: 10px; border: none;  background: rgba(255, 255, 255, 0.1);">Sonido:</label>                                           
                                         <input type="number" id="_precio" name="_precios" value="" placeholder="Precio:" min="1" required>
-                                    </div>                                        
+                                    </div>
                                 </form>
                             </div> 
                             <div class="button">
