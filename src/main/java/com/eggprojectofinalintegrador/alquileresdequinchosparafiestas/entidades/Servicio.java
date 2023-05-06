@@ -17,20 +17,22 @@ import org.hibernate.annotations.GenericGenerator;
  *
  * @author Leo
  */
-//@Entity
+@Entity
 public class Servicio {
     @Id
     @GeneratedValue(generator="uuid")
     @GenericGenerator(name="uuid", strategy="uuid2")
     private String idServicio;
     
-    private boolean disponible;
     private String nombre;
     private double precio;      
     
     /*@ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name="idPropiedad", nullable=false)
-    private Propiedad propiedad;*/   
+    private Propiedad propiedad;*/ 
+    @ManyToOne(fetch = FetchType.LAZY)    
+    @JoinColumn(name="propiedad_id", nullable=false)
+    private Propiedad propiedad;
 
     public Servicio() {
     }
@@ -41,14 +43,6 @@ public class Servicio {
 
     public void setId(String idServicio) {
         this.idServicio = idServicio;
-    }
-
-    public boolean isDisponible() {
-        return disponible;
-    }
-
-    public void setDisponible(boolean disponible) {
-        this.disponible = disponible;
     }
 
     public String getNombre() {
@@ -73,5 +67,13 @@ public class Servicio {
 
     public void setIdServicio(String idServicio) {
         this.idServicio = idServicio;
+    }
+
+    public Propiedad getPropiedad() {
+        return propiedad;
+    }
+
+    public void setPropiedad(Propiedad propiedad) {
+        this.propiedad = propiedad;
     }
 }

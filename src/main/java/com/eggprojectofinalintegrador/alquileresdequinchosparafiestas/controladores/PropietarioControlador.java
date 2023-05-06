@@ -5,9 +5,9 @@
 package com.eggprojectofinalintegrador.alquileresdequinchosparafiestas.controladores;
 
 import com.eggprojectofinalintegrador.alquileresdequinchosparafiestas.entidades.PropiedadDTO;
-import com.eggprojectofinalintegrador.alquileresdequinchosparafiestas.entidades.UsuarioDTO;
 import com.eggprojectofinalintegrador.alquileresdequinchosparafiestas.excepciones.MiException;
 import com.eggprojectofinalintegrador.alquileresdequinchosparafiestas.servicios.PropiedadServicio;
+import javax.servlet.http.HttpSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
@@ -37,20 +37,20 @@ public class PropietarioControlador {
     }
 
     @PostMapping(value = "/registroPropiedad")
-    public String registroPropiedad(@RequestParam(value = "archivo", required = false) MultipartFile[] archivos, @ModelAttribute PropiedadDTO propiedadDTO, ModelMap modelo) {
+    public String registroPropiedad(HttpSession session, @RequestParam(value = "archivo", required = false) MultipartFile[] archivos, @ModelAttribute PropiedadDTO propiedadDTO, ModelMap modelo) {
 
         try {
             
-            propiedadServicio.registrarPropiedad(archivos, propiedadDTO);
-            modelo.put("exito","Usuario registrado correctamente");
+            propiedadServicio.registrarPropiedad(session, archivos, propiedadDTO);
+            modelo.put("exito","PROPIEDAD registrada correctamente");
 
-            return "index.html";
+            return "perfilPropietario.html";
             
         } catch (MiException ex) {
             
             modelo.put("error", ex.getMessage());
 
-            return "registroPropietario.html";
+            return "perfilPropietario.html";
             
         }
     }

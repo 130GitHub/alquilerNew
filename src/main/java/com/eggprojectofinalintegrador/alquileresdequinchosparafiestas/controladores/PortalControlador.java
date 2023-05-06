@@ -65,11 +65,11 @@ public class PortalControlador {
     }
 
     @PostMapping(value="/registroPropietario")            
-    public String registroPropietario(@RequestParam(value = "archivo",required = false) MultipartFile[] archivos, @ModelAttribute UsuarioDTO usuarioDTO, ModelMap modelo)  throws MiException {
+    public String registroPropietario(@RequestParam(value = "archivo",required = false) MultipartFile archivo, @ModelAttribute UsuarioDTO usuarioDTO, ModelMap modelo) {
         
         try{
             
-            userPropietarioServicio.registrarUserPropietario(archivos, usuarioDTO);
+            userPropietarioServicio.registrarUserPropietario(archivo, usuarioDTO);
             modelo.put("exito","Usuario registrado correctamente");
             
             return "index.html";
