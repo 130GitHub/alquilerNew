@@ -1,11 +1,3 @@
-/*
-Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
-Click nbfs://nbhost/SystemFileSystem/Templates/Other/CascadeStyleSheet.css to edit this template
-*/
-/* 
-    Created on : 02/05/2023, 14:09:32
-    Author     : Leo
-*/
 * {
 
     margin: 0;
@@ -33,6 +25,129 @@ img {
     border-radius: 20px 20px 0px 0px;
 }
 
+/*MENU NAV*/
+ 
+.hero {
+    
+  background: linear-gradient(#3b5998, transparent);  
+    color: #fff;
+    display: grid;
+    grid-template-rows: max-content 1fr;
+    grid-template-areas:
+      "nav"
+      "content";   
+    width: 100%;
+    
+    position: fixed;
+  z-index: 999;
+  }
+  
+  
+.nav__logo .image {     
+  width: 30%;
+  height:30%; 
+ }  
+  
+  .navbar {    
+    grid-area: nav;
+    display: grid;
+    display: flex;
+    justify-content: space-between;
+    grid-auto-flow: column;
+    gap: 1em;
+    align-items: center;
+    padding: 5px 30px;
+    
+  }
+  
+  .navbar .nav-header {
+    margin: auto;
+    display: inline;
+  }
+  .navbar .nav-header .nav-logo {
+    display: inline-block;
+    margin-top: -7px;
+  }
+  .navbar .nav-links {
+    display: inline;
+    float: right;
+    font-size: 5px;
+  }
+  
+  /*Tipografia menu*/
+  .navbar .nav-links a {
+    font-family: "Lato", sans-serif;
+    padding: 20px 12px;
+    text-decoration: none;
+    color: white;
+    border-radius: 6px;
+    font-size: 16px;
+  }
+  /* Hover effects */
+  .navbar .nav-links a:hover {
+    background-color: #fa9e69;
+    border-radius: 6px;
+  }
+  
+  /* responsive navbar toggle button */
+  .navbar #nav-check,
+  .navbar .nav-btn {
+    display: none;
+  }
+  
+  /* Dropdown menu CSS code */
+  .dropdown {
+    position: relative;
+    display: inline-block;
+  }
+  .drop-content,
+  .drop-content2 {
+    display: none;
+    position: absolute;
+    background-color: #9ea3a7;
+    border-radius: 6px;
+    min-width: 120px;
+    font-size: 16px;
+    font-family: "Urbanist", sans-serif;
+    top: 34px;
+  }
+  /* on hover show dropdown */
+  .dropdown:hover .drop-content,
+  .dropdown2:hover .drop-content2 {
+    display: block;
+  }
+  /* Color lineas links */
+  .drop-content a {
+    padding: 12px 10px;
+    border-bottom: 1px solid #757c81;
+    display: block;
+    transition: all 0.5s ease !important;
+  }
+  .dropBtn .drop-content a:hover {
+    background-color: rgb(250, 158, 102) ;
+  }
+  .dropdown:hover .dropBtn,
+  .dropdown2:hover .dropBtn2 {
+    background-color: rgb(250, 158, 102) ;
+  }
+  .dropdown2 .drop-content2 {
+    position: absolute;
+    left: 120px;
+    top: 126px;
+  }
+  .dropBtn2 i {
+    margin-left: 15px;
+  }
+
+  @media (max-width: 200px) {
+    .navbar
+   {
+    padding: 0 10px 30px;
+    display: flow-root;    
+    text-align: center;
+    margin: 10%;
+  }    
+}
 
 
 .contenedor {
@@ -59,6 +174,23 @@ img {
     flex: 1 1 300px;
     margin-top: 20px;
 }
+
+
+.contenedor-1>div {
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  background-color: #000000;
+  height: 400px;
+  width: 400px;
+  border-radius: 20px;
+  flex-direction: column;
+  padding-top: 35px;
+  gap: 25px;
+  flex: 1 1 300px;
+  margin-top: 20px;
+}
+
 
 
 .contenedor>div>form {
@@ -282,10 +414,8 @@ option{
   }
   
   .nav__logo {
-  
-    font-size: 2rem;
-    font-weight: 300px;
-    font-family: "Lora", sans-serif;
+    display: flex;    
+    width: 100%;
   }
   
   .navbar {    
@@ -491,13 +621,14 @@ option{
  
   .pantalla_izquierda{      
     background-repeat: no-repeat;  
-    width: 20%;
+    width: 30%;
     padding: 30px;
     float: left;
     margin-left: 10px;
-    margin-top: 150px;
+    margin-top: 190px;
     background: black;
     border-radius: 20px;
+    display: flex;
     
   }
   
@@ -560,8 +691,7 @@ option{
     background: #46a2fd;
     font-weight: 600;
     cursor: pointer;
-    color: white;
-    outline: none;
+    color: white;   
     justify-content: center;
   }
   
@@ -679,13 +809,23 @@ height: 100px;
 }
 
 
-
-
 #cargar{
   margin-top: 20px;
   height: 35px;
   border-radius: 11px;
   border: none;
   color: black;
-  width: 90%;
+  width: 60%;
+  padding: 20px;
+  text-align: center;
+  margin-bottom: 15px;
 }
+
+
+.caracteristica_texto{
+  margin: 10px;
+
+}
+  
+  
+

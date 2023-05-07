@@ -1,0 +1,566 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width">
+  <title>Perfil Propietario</title>
+ 
+  <link rel="stylesheet" href="./css/estiloPerfilPropietario.css">
+  <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css"
+    integrity="sha384-AYmEC3Yw5cVb3ZcuHtOA93w35dYTsvhLPVnYs9eStHfGJvOvKxVfELGroGkvsg+p" crossorigin="anonymous" />
+</head>
+
+
+<body>
+
+
+  <header class="hero">
+    <div class="navbar">
+      <div class="nav__logo">
+        <img src="img/logo.png" class="image" />
+      </div>
+
+      <div class="nav-links">
+        <div class="nav-header">
+          <a href="carritoAlquiler.html">Alquileres</a>
+        </div>
+      </div>
+    </div>
+  </header>
+
+
+
+
+  <!--====1 Primer contenedor ====-->
+
+  <div class="contenedor" id="contenedor-1" >
+    <!--====Menu lateral ====-->
+    <section id="body">
+
+
+      <div class="menu__side" id="menu_side">
+        <a href="#ususario">
+        <div class="name__page">
+          <i class="fa-solid fa-user" style="color: black;"></i>
+        </div>
+      </a>
+
+        <div class="options__menu">
+
+          <a href="#contenedor-2">
+            <div class="option">
+              <i class="fa-regular fa-calendar" title="Inicio"></i>
+            </div>
+          </a>
+
+          <a href="#cliente">
+            <div class="option">
+              <i class="fa-solid fa-check" title="Cursos"></i>
+            </div>
+          </a>
+
+          <a href="#contenedor-4">
+            <div class="option">
+              <i class="fa-solid fa-file-pen"></i>
+            </div>
+          </a>
+
+          <a href="#creado">
+            <div class="option">
+              <i class="fa-solid fa-house-chimney" title="Blog"></i>
+            </div>
+          </a>
+        </div>
+    </section>
+    <!--==== Perfil Propietario====-->
+    <section class="perfil-usuario" id="ususario">
+      <div class="contenedor-perfil">
+        <div class="portada-perfil">
+          <div class="sombra"></div>
+
+
+          <div class="avatar-perfil">
+            <img src="./img/avatar.png" alt="img">
+            <a href="#" class="cambiar-foto">
+              <i class="fas fa-camera"></i>
+              <span>Cambiar foto</span>
+            </a>
+          </div>
+          <div class="datos-perfil">
+            <p id="estrellas" class="clasificacion">
+              <input id="valorAñadir" type="radio" name="estrellas" value="5"><!--
+                --><label for="radio1" id="estrella">★</label><!--
+                --><input id="radio2" type="radio" name="estrellas" value="4"><!--
+                --><label for="radio2" id="estrella2">★</label><!--
+                --><input id="radio3" type="radio" name="estrellas" value="3"><!--
+                --><label for="radio3" id="estrella3">★</label><!--
+                --><input id="radio4" type="radio" name="estrellas" value="2"><!--
+                --><label for="radio4" id="estrella4">★</label><!--
+                --><input id="radio5" type="radio" name="estrellas" value="1"><!--
+                --><label for="radio5" id="estrella5">★</label>
+            </p>
+            <h4 class="titulo-usuario">Nombre de propietario</h4>
+            <p class="bio-usuario">Contacto:</p>
+            <ul class="lista-perfil">
+
+              <i style="padding: 4px; font-size: 13px;" class="fa-solid fa-envelope"></i>
+              <li>chacra@gmail.com</li>
+
+              <i style="padding: 4px; font-size: 13px;" class="fa-solid fa-phone"></i>
+              <li> 4442845</li>
+            </ul>
+          </div>
+          <div class="opcciones-perfil">
+            <button type=""> Cambiar portada</button>
+            <button type=""><i class="fas fa-wrench"></i></button>
+          </div>
+        </div>
+      </div>
+    </section>
+  </div>
+  </section>
+
+  </div>
+
+  <!--====Segundo Contenedor====-->
+  <div class="contenedor" id="contenedor-2" >
+
+
+    <div class="contenedor-contenedor-calendario">
+      <h1 class="titulo_color" id="creado" style="color: aliceblue;">Calendario Reserva</h1>
+    </div>
+
+    <div id="container">
+      <div id="header">
+        <div id="monthDisplay"></div>
+        <div>
+          <button id="backButton">Anterior</button>
+          <button id="nextButton">Siguientes</button>
+        </div>
+      </div>
+
+      <div id="weekdays">
+        <div>Domimgo</div>
+        <div>Lunes</div>
+        <div>Martes</div>
+        <div>Miercoles</div>
+        <div>Jueves</div>
+        <div>Viernes</div>
+        <div>Sabado</div>
+      </div>
+
+      <div id="calendar"></div>
+    </div>
+
+    <div id="newEventModal">
+      <h2>Nuevo evento</h2>
+
+      <input id="eventTitleInput" placeholder="Event Title" />
+
+      <button id="saveButton">Guardar</button>
+      <button id="cancelButton">Cancelar</button>
+    </div>
+
+    <div id="deleteEventModal">
+      <h2>Evento</h2>
+
+      <p id="eventText"></p>
+
+      <button id="deleteButton">Eliminar</button>
+      <button id="closeButton">Cerrar</button>
+    </div>
+
+    <div id="modalBackDrop"></div>
+  </div>
+  </div>
+  </div>
+
+  <!--====Tercer contenedor====-->
+  <div class="contenedor" id="contenedor-3">
+
+    <!--====  Tabla de detalle reserva cliente  ====-->   
+    <h1 class="titulo_color" id="cliente" style="color: aliceblue;">Tabla clientes</h1>
+
+    <section class="table__header">
+      <div class="input-group">
+        <input type="search" placeholder="Buscar...">
+        <img src="images/search.png" alt="">
+      </div>
+    </section>
+    <section class="table__body">
+      <table>
+        <thead>
+          <tr>
+            <th> Id <span class="icon-arrow">&UpArrow;</span></th>
+            <th> Cliente <span class="icon-arrow">&UpArrow;</span></th>
+            <th> Correo <span class="icon-arrow">&UpArrow;</span></th>
+            <th> Fecha <span class="icon-arrow">&UpArrow;</span></th>
+            <th> Estado <span class="icon-arrow">&UpArrow;</span></th>
+            <th> Precio <span class="icon-arrow">&UpArrow;</span></th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td> 1 </td>
+            <td> Leo back</td>
+            <td> Seoul </td>
+            <td> 17 Dec, 2022 </td>
+            <td>
+              <p class="status delivered">Autorizar</p>
+            </td>
+            <td> <strong> $128.90 </strong></td>
+          </tr>
+          <tr>
+            <td> 2 </td>
+            <td> Leo Front</td>
+            <td> Kathmandu </td>
+            <td> 27 Aug, 2023 </td>
+            <td>
+              <p class="status delivered">Autorizar</p>
+            </td>
+            <td> <strong>$5350.50</strong> </td>
+          </tr>
+          <tr>
+            <td> 3</td>
+            <td> Marina Lo </td>
+            <td> Tokyo </td>
+            <td> 14 Mar, 2023 </td>
+            <td>
+              <p class="status delivered">Autorizar</p>
+            </td>
+            <td> <strong>$210.40</strong> </td>
+          </tr>
+          <tr>
+            <td> 4</td>
+            <td> Alson GC </td>
+            <td> New Delhi </td>
+            <td> 25 May, 2023 </td>
+            <td>
+              <p class="status delivered">Autorizar</p>
+            </td>
+            <td> <strong>$149.70</strong> </td>
+          </tr>
+          <tr>
+            <td> 5</td>
+            <td> Sara Li </td>
+            <td> Paris </td>
+            <td> 23 Apr, 2023 </td>
+            <td>
+              <p class="status delivered">Autorizar</p>
+            </td>
+            <td> <strong>$399.99</strong> </td>
+          </tr>
+        </tbody>
+      </table>
+    </section>
+
+
+  </div>
+
+  <!--==== Cuarto Contenedor====-->
+  <div class="contenedor" id="contenedor-4" >
+
+    <div id="tabla">
+      
+
+      <form class="formulario" th:action="@{/}" th:object="${usuarios}" method="POST" enctype="multipart/form-data">
+        <h1 class="titulo_color" id="cliente">Añadir Propiedad</h1>
+          <div class="input-contenedor">
+            <i class="fa-solid fa-font"></i>
+            <input type="text" id="_titulo" name="_titulos" value="" placeholder="Titulo de Propiedad:" required="true">
+          </div>
+          <br><br>
+
+
+          <div class="input-contenedor">
+            <i class="fa-solid fa-location-dot"></i>
+            <input type="text" id="_ubicacion" name="_ubicaciónes" value="" placeholder="Ubicación de Propiedad:"
+              required="true">
+          </div>
+          <br><br>
+
+          <div class="input-contenedor">
+            <i class="fa-solid fa-dollar-sign"></i>
+            <input type="text" id="_precio" name="_precios" value="" placeholder="Precio del Alquiler:" required="true">
+          </div>
+          <br><br>     
+
+
+          <div>
+            <span>Agregar Imagen de propiedad:</span>
+            <input type="file" class='boton-multiple' id="archivo3" name="file" accept="image/*" multiple />
+          </div>
+          <br><br>
+
+          <div>
+            <p>
+              Servicios Extras:<br>
+          </div>
+          <!--Formulario check precio-->
+          <div id="FormularioCheckbox">
+            <label>
+              <input type="checkbox" name="opcion1" id="opcion1"
+                onchange="togglePrecio('opcion1', 'precio1')">Decoración:
+              <input type="number" name="precio1" id="precio1" placeholder="Ingrese el precio" disabled />
+            </label>
+            <label>
+              <input type="checkbox" name="opcion2" id="opcion2" onchange="togglePrecio('opcion2', 'precio2')">Sonido:
+              <input type="number" name="precio2" id="precio2" placeholder="Ingrese el precio" disabled />
+            </label>
+            <label>
+              <input type="checkbox" name="opcion3" id="opcion3" onchange="togglePrecio('opcion3', 'precio3')">Wifi Pemium
+              <input type="number" name="precio3" id="precio3" placeholder="Ingrese el precio" disabled />
+            </label>
+          </div>
+          <input class="button" type="button" onclick="" value="añadir">
+      </div>  
+                 
+      </div>
+    </form>
+  </div>
+</div>
+
+
+
+  <!--====Quinto Contenedor====-->
+  <div class="contenedor" id="contenedor-5" >
+
+    
+
+
+          <h1 class="titulo_color" >Alquileres Creados</h1>
+          <div class="container">
+
+            <div class="row" id="creado">         
+
+
+
+              <div class="col-sm" >
+                <div class="grid" style="width: 50%;">
+                  <div class="items">
+                     <!-- Carrusel-->
+                    <div class="carousel">
+                      <div class="slide">
+                        <img src="./img/casa1.jpg" alt="">
+                      </div>
+                      <div class="slide">
+                        <img src="./img/casa2.jpg" alt="">
+                      </div>
+                      <div class="slide">
+                        <img src="./img/casa3.jpg" alt="">
+                      </div>
+                    </div>  
+                    <div class="info">
+                      <h3>Quincho</h3>
+                      <P style="font-size: 17px; font-family: 'Lato';">Mar del Plata</P>
+                      <p style="font-size: 17px; font-family: 'Lato';">Servicios Extras: Sonido</p>
+                      <P style="font-size: 15px; font-family: 'Lato';">Lorem ipsum dolor sit amet consectetur adipisicing elit. Repellendus accusamus minima, reprehenderit dolores qui, odio alias iure veniam dolor asperiores voluptatem ipsam, nulla eius unde illum nobis. A, libero? Deleniti.</P>
+                      <div class="precio">
+                        <p>$60.000</p>
+                        <p>$100.000</p>
+                      </div>
+                    <a href="./reservaAlquiler.html"><button>Leer más</button></a>
+                    <button onclick="abrirModal()">Editar</button>
+                   <button>Eliminar</button>                                  
+                    </div>          
+                  </div>
+                </div>
+              </div>
+               <!-- Ventana modal -->
+          <div id="miModal" class="modal">
+            <div class="modal-content">
+                        
+              <form class="formulario" th:action="@{/}" th:object="${usuarios}" method="POST" enctype="multipart/form-data">
+                <h1 class="heading-4"> Crear Detalle Propiedad: </h1>
+                  <div class="input-contenedor">
+                    <i class="fa-solid fa-font"></i>
+                    <input type="text" id="_titulo" name="_titulos" value="" placeholder="Titulo de Propiedad:" required="true">
+                  </div>
+                  <br><br>
+        
+        
+                  <div class="input-contenedor">
+                    <i class="fa-solid fa-location-dot"></i>
+                    <input type="text" id="_ubicacion" name="_ubicaciónes" value="" placeholder="Ubicación de Propiedad:"
+                      required="true">
+                  </div>
+                  <br><br>               
+        
+                  <div class="input-contenedor">
+                    <i class="fa-solid fa-dollar-sign"></i>
+                    <input type="text" id="_precio" name="_precios" value="" placeholder="Precio del Alquiler:" required="true">
+                  </div>
+                  <br><br>         
+        
+                 
+        
+                  <div>
+                    <span>Agregar Imagen de propiedad:</span>
+                    <input type="file" class='boton-multiple' id="archivo3" name="file" accept="image/*" multiple />
+                  </div>
+                  <br><br>
+        
+                  <div>
+                    <p>
+                      Servicios Extras:<br>
+                  </div>
+                  <!--Formulario check precio-->
+                  <div id="FormularioCheckbox">
+                    <label>
+                      <input type="checkbox" name="opcion1" id="opcion1"
+                        onchange="togglePrecio('opcion1', 'precio1')">Decoración:
+                      <input type="number" name="precio1" id="precio1" placeholder="Ingrese el precio" disabled />
+                    </label>
+                    <label>
+                      <input type="checkbox" name="opcion2" id="opcion2" onchange="togglePrecio('opcion2', 'precio2')">Sonido:
+                      <input type="number" name="precio2" id="precio2" placeholder="Ingrese el precio" disabled />
+                    </label>
+                    <label>
+                      <input type="checkbox" name="opcion3" id="opcion3" onchange="togglePrecio('opcion3', 'precio3')">Wifi Pemium
+                      <input type="number" name="precio3" id="precio3" placeholder="Ingrese el precio" disabled />
+                    </label>
+                  </div>
+                  <input class="button" type="button" onclick="" value="Editar">
+                  <input  id="cerrar-ventana" class="button" type="button" value="Cerrar" onclick="cerrarModal()"></input>   
+              </div>  
+                         
+              </div>
+            </form>
+            </div>
+          </div>
+        
+
+              <div class="col-sm" >
+                <div class="grid" style="width: 50%;">
+                  <div class="items">
+                     <!-- Carrusel-->
+                    <div class="carousel">
+                      <div class="slide">
+                        <img src="./img/1.png" alt="">
+                      </div>
+                      <div class="slide">
+                        <img src="./img/2.png" alt="">
+                      </div>
+                      <div class="slide">
+                        <img src="./img/3.png" alt="">
+                      </div>
+                    </div>                    
+                    <div class="info">
+                      <h3>Quincho</h3>
+                      <P style="font-size: 17px; font-family: 'Lato';">Mar del Plata</P>
+                      <p style="font-size: 17px; font-family: 'Lato';">Servicios Extras: Sonido</p>
+                      <P style="font-size: 15px; font-family: 'Lato';">Lorem ipsum dolor sit amet consectetur adipisicing elit. Repellendus accusamus minima, reprehenderit dolores qui, odio alias iure veniam dolor asperiores voluptatem ipsam, nulla eius unde illum nobis. A, libero? Deleniti.</P>
+                      <div class="precio">
+                        <p>$60.000</p>
+                        <p>$100.000</p>
+                      </div>
+                    <a href="./reservaAlquiler.html"><button>Leer más</button></a>
+                    <button onclick="abrirModal()">Editar</button>
+                   <button>Eliminar</button>                                  
+                    </div>          
+                  </div>
+                </div>
+              </div>
+               <!-- Ventana modal -->
+          <div id="miModal" class="modal">
+            <div class="modal-content">
+                        
+              <form class="formulario" th:action="@{/}" th:object="${usuarios}" method="POST" enctype="multipart/form-data">
+                <h1 class="heading-4"> Crear Detalle Propiedad: </h1>
+                  <div class="input-contenedor">
+                    <i class="fa-solid fa-font"></i>
+                    <input type="text" id="_titulo" name="_titulos" value="" placeholder="Titulo de Propiedad:" required="true">
+                  </div>
+                  <br><br>
+        
+        
+                  <div class="input-contenedor">
+                    <i class="fa-solid fa-location-dot"></i>
+                    <input type="text" id="_ubicacion" name="_ubicaciónes" value="" placeholder="Ubicación de Propiedad:"
+                      required="true">
+                  </div>
+                  <br><br>               
+        
+                  <div class="input-contenedor">
+                    <i class="fa-solid fa-dollar-sign"></i>
+                    <input type="text" id="_precio" name="_precios" value="" placeholder="Precio del Alquiler:" required="true">
+                  </div>
+                  <br><br>            
+        
+                 
+        
+                  <div>
+                    <span>Agregar Imagen de propiedad:</span>
+                    <input type="file" class='boton-multiple' id="archivo3" name="file" accept="image/*" multiple />
+                  </div>
+                  <br><br>
+        
+                  <div>
+                    <p>
+                      Servicios Extras:<br>
+                  </div>
+                  <!--Formulario check precio-->
+                  <div id="FormularioCheckbox">
+                    <label>
+                      <input type="checkbox" name="opcion1" id="opcion1"
+                        onchange="togglePrecio('opcion1', 'precio1')">Decoración:
+                      <input type="number" name="precio1" id="precio1" placeholder="Ingrese el precio" disabled />
+                    </label>
+                    <label>
+                      <input type="checkbox" name="opcion2" id="opcion2" onchange="togglePrecio('opcion2', 'precio2')">Sonido:
+                      <input type="number" name="precio2" id="precio2" placeholder="Ingrese el precio" disabled />
+                    </label>
+                    <label>
+                      <input type="checkbox" name="opcion3" id="opcion3" onchange="togglePrecio('opcion3', 'precio3')">Wifi Pemium
+                      <input type="number" name="precio3" id="precio3" placeholder="Ingrese el precio" disabled />
+                    </label>
+                  </div>
+                  <input class="button" type="button" onclick="" value="Editar">
+                  <input  id="cerrar-ventana" class="button" type="button" value="Cerrar" onclick="cerrarModal()"></input>   
+              </div>  
+                         
+              </div>
+            </form>
+            </div>
+          </div>  
+          
+          <!-- Página del propietario -->
+<button id="send-notification">Enviar notificación</button>
+          
+
+  </div>
+    
+      
+
+   
+
+ 
+          <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
+            integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
+            crossorigin="anonymous"></script>
+          <script src="https://cdn.jsdelivr.net/npm/popper.js@1.14.7/dist/umd/popper.min.js"
+            integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1"
+            crossorigin="anonymous"></script>
+          <script src="https://kit.fontawesome.com/81581fb069.js" crossorigin="anonymous"></script>
+
+
+          <script>
+               // En la página del propietario:
+const sendNotificationButton = document.getElementById('send-notification');
+sendNotificationButton.addEventListener('click', () => {
+  const message = prompt('Ingrese el mensaje de la notificación');
+  // Enviar la notificación al servidor utilizando AJAX o WebSockets
+});
+          </script>
+          <script src="./js/script.js"></script>
+          <script src="./js/calendario.js"></script>
+          <script src="./js/tablaDetalleUsuario.js"></script>
+          <script src="./js/autorizacionCheck.js"></script>
+          <script src="./js/modal.js"></script>
+          <script src="./js/carrusel.js"></script>
+
+
+</body>
+
+</html>
