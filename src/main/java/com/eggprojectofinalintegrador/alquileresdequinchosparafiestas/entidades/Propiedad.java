@@ -7,10 +7,12 @@ package com.eggprojectofinalintegrador.alquileresdequinchosparafiestas.entidades
 
 import java.util.HashSet;
 import java.util.Set;
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
 import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 import org.hibernate.annotations.GenericGenerator;
@@ -33,17 +35,13 @@ public class Propiedad {
     @OneToOne
     private UserPropietario userPropietario;
     
-    //@OneToMany(cascade = CascadeType.ALL, orphanRemoval = true)
-    //@JoinColumn(name = "propiedad_id") 
-    //@OneToMany(mappedBy = "propiedad")
-    @OneToMany(fetch = FetchType.LAZY, mappedBy = "propiedad")
-    private Set<Servicio> servicios = new HashSet<>();
-   
-    //@OneToMany(mappedBy = "propiedad")  
-    //@JoinColumn(name = "propiedad_id") 
-    //private Set<Imagen> imagenes = new HashSet<>();
-    @OneToMany(fetch = FetchType.LAZY, mappedBy = "propiedad")
-    private Set<Imagen> imagenes = new HashSet<>();
+    @OneToMany(cascade = CascadeType.ALL, orphanRemoval = true)
+    @JoinColumn(name = "propiedad_id")
+    private Set<Servicio> servicios = new HashSet();   
+    
+    @OneToMany(cascade = CascadeType.ALL, orphanRemoval = true)
+    @JoinColumn(name = "propiedad_id") 
+    private Set<Imagen> imagenes = new HashSet();
     
     private boolean alta;
 

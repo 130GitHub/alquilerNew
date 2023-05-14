@@ -88,6 +88,85 @@ z-index: 999;
   border-radius: 6px;
 }
 
+/* */
+/Estilos/
+.error-message {
+  margin-bottom: 10px;
+  background-color: #fdedee;
+  color: #eb0909;
+  padding: 10px;
+  border-radius: 5px; 
+  margin: 0 auto 10px;
+  width: 50%;
+}
+
+.error-title {
+  font-size: 18px; 
+  text-align: center;
+  margin-left: 10px;
+}
+
+.error-description {
+  font-size: 14px;
+  text-align: center;
+}
+
+.success-message {  
+  background-color: #e7f7eb;
+  color: #00771d;
+  padding: 10px;
+  border-radius: 5px;
+  margin: 0 auto;
+  width: 50%;
+}
+
+
+
+.success-title {
+  font-size: 18px;
+  text-align: center;
+}
+
+.success-description {
+  font-size: 14px;
+  text-align: center;
+}
+
+.success-title i {
+  margin-right: 7px;
+  
+}
+
+.error-title i {
+  margin-right: 7px;
+}
+
+
+.success-title,
+.error-title {
+  margin-left: 15px;
+ 
+}
+
+.close-button {
+  background-color: #eaeaea;
+  border: none;
+  background-color: #000000;  
+  font-size: 14px;
+  cursor: pointer;
+  border-radius: 4px;
+  background-color: #000000;
+ width: 5%;
+ margin-top: -80px;
+ float: right;
+ color:#fff;
+}
+
+.close-button:hover {
+  background-color: #000000;
+  
+}
+
 /* responsive navbar toggle button */
 .navbar #nav-check,
 .navbar .nav-btn {
@@ -270,7 +349,7 @@ z-index: 999;
   padding: 3px;
 }
 
-
+input#_telefono,
 input[type="file"],
 input[type="text"],
 input[type="_email"],

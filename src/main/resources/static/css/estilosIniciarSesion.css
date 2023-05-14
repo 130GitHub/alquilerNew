@@ -36,7 +36,7 @@ span {
 .izquierda {   
   background: #3157ad;
   opacity: 1;
-  background-image: url("../imagen/textura1.png");
+  background-image: url("../img/textura1.png");
   background-repeat: no-repeat;
   height: 160vh;
   width: 50%;

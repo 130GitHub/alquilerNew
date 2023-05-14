@@ -8,7 +8,9 @@ package com.eggprojectofinalintegrador.alquileresdequinchosparafiestas.servicios
 import com.eggprojectofinalintegrador.alquileresdequinchosparafiestas.entidades.ServicioDTO;
 import com.eggprojectofinalintegrador.alquileresdequinchosparafiestas.entidades.Servicio;
 import com.eggprojectofinalintegrador.alquileresdequinchosparafiestas.excepciones.MiException;
+import com.eggprojectofinalintegrador.alquileresdequinchosparafiestas.repositorios.ServicioRepositorio;
 import javax.transaction.Transactional;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 /**
@@ -17,7 +19,11 @@ import org.springframework.stereotype.Service;
  */
 @Service
 public class ServicioServicio {
-
+    
+    
+    @Autowired
+    private ServicioRepositorio servicioRepositorio;
+    
     @Transactional
     public Servicio addServicio(ServicioDTO servicioDTO) throws MiException {
         
@@ -25,8 +31,8 @@ public class ServicioServicio {
         
         servicio.setNombre(servicioDTO.getNombre());
         servicio.setPrecio(servicioDTO.getPrecio());
-
-        return servicio;
+        
+        return servicioRepositorio.save(servicio);        
 
     }
 

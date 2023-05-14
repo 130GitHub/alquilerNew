@@ -35,10 +35,10 @@ public class Imagen {
     //@ManyToOne
     //@JoinColumn(name="propiedadid")
     //private Propiedad propiedad;
-    @ManyToOne(fetch = FetchType.LAZY)
+    //@ManyToOne(fetch = FetchType.LAZY)
     //@JoinColumn(name = "propiedad_id")
-    @JoinColumn(name="propiedad_id", nullable=false)
-    private Propiedad propiedad;
+    //@JoinColumn(name="propiedad_id", nullable=false)
+    //private Propiedad propiedad;
     
     public Imagen() {
     }
@@ -73,13 +73,5 @@ public class Imagen {
 
     public void setContendido(byte[] contendido) {
         this.contendido = contendido;
-    }
-
-    public Propiedad getPropiedad() {
-        return propiedad;
-    }
-
-    public void setPropiedad(Propiedad propiedad) {
-        this.propiedad = propiedad;
     }
 }

@@ -8,10 +8,14 @@ import com.eggprojectofinalintegrador.alquileresdequinchosparafiestas.entidades.
 import com.eggprojectofinalintegrador.alquileresdequinchosparafiestas.entidades.Propiedad;
 import com.eggprojectofinalintegrador.alquileresdequinchosparafiestas.entidades.PropiedadDTO;
 import com.eggprojectofinalintegrador.alquileresdequinchosparafiestas.entidades.Servicio;
+import com.eggprojectofinalintegrador.alquileresdequinchosparafiestas.entidades.ServicioDTO;
 import com.eggprojectofinalintegrador.alquileresdequinchosparafiestas.entidades.UserPropietario;
 import com.eggprojectofinalintegrador.alquileresdequinchosparafiestas.excepciones.MiException;
 import com.eggprojectofinalintegrador.alquileresdequinchosparafiestas.repositorios.PropiedadRepositorio;
+import java.util.ArrayList;
 import java.util.HashSet;
+import java.util.List;
+import java.util.Optional;
 import java.util.Set;
 import javax.servlet.http.HttpSession;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -29,6 +33,9 @@ public class PropiedadServicio {
     private ImagenServicio imagenServicio;
     
     @Autowired
+    private ServicioServicio servicioServicio;
+    
+    @Autowired
     private PropiedadRepositorio propiedadRepositorio;
 
     public void registrarPropiedad(HttpSession session, MultipartFile[] archivos, PropiedadDTO propiedadDTO) throws MiException {
@@ -43,36 +50,50 @@ public class PropiedadServicio {
         
         p.setUserPropietario(logueado);      
         
-        /* Objetos de la clase Servicio*/
-        Servicio s1=new Servicio();
-
-        s1.setNombre(propiedadDTO.getCheckbox_servicio1());
-        s1.setPrecio(propiedadDTO.getInput_precio1());
-
-        Servicio s2=new Servicio();
-
-        s2.setNombre(propiedadDTO.getCheckbox_servicio2());
-        s2.setPrecio(propiedadDTO.getInput_precio2());
-
-        Servicio s3=new Servicio();
-
-        s3.setNombre(propiedadDTO.getCheckbox_servicio3());
-        s3.setPrecio(propiedadDTO.getInput_precio3());
-
-        /* Conjunto de objetos servicio */
+        /* Inicio Conjunto de objetos servicio */
         Set<Servicio> servicios = new HashSet();
+        
+        /* Inicio Objetos de la clase Servicio*/        
+        ServicioDTO s1=new ServicioDTO();
 
-        servicios.add(s1);
-        servicios.add(s2);
-        servicios.add(s3);       
+        s1.setNombre(propiedadDTO.getOpcion1());
+        s1.setPrecio(propiedadDTO.getPrecio1()); 
+        
+        servicios.add(servicioServicio.addServicio(s1));  
+        
+        ServicioDTO s2=new ServicioDTO();
+
+        s2.setNombre(propiedadDTO.getOpcion2());
+        s2.setPrecio(propiedadDTO.getPrecio2());
+        
+        servicios.add(servicioServicio.addServicio(s2));
+
+        ServicioDTO s3=new ServicioDTO();
+
+        s3.setNombre(propiedadDTO.getOpcion3());
+        s3.setPrecio(propiedadDTO.getPrecio3()); 
+        
+        servicios.add(servicioServicio.addServicio(s3));      
+        /* Fin Objetos de la clase Servicio*/         
+         
+        /* Fin Conjunto de objetos servicio */        
         
         p.setServicios(servicios);
         
         //IMAGENES
-        Set<Imagen> imagenes = new HashSet<>();
-        for (int i = 0; i < archivos.length-1; i++){
-            imagenes.add(imagenServicio.guardar(archivos[i]));
-        }        
+        Set<Imagen> imagenes = new HashSet();       
+                
+        for (int i=0; i<archivos.length; i++){
+            if (archivos[i] != null) {
+                try{                    
+                    Imagen imagen=imagenServicio.guardar(archivos[i]);
+                    imagenes.add(imagen);
+                    
+                }catch (Exception ex) {
+                    System.err.println(">>" + ex.getMessage());
+                }
+            }
+        } 
         
         p.setImagenes(imagenes);
         
@@ -80,6 +101,16 @@ public class PropiedadServicio {
         
         propiedadRepositorio.save(p);
         
+    }
+    
+    public List<Propiedad> listarPropiedades(String palabraClave){
+        List<Propiedad> propiedades=new ArrayList();
+        
+        if (palabraClave != null) {
+            propiedades = propiedadRepositorio.buscarPorPropietario(palabraClave);
+        }
+
+        return propiedades;
     }
        
 }

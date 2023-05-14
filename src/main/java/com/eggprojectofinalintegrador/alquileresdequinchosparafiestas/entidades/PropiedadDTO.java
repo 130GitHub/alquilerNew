@@ -13,12 +13,12 @@ public class PropiedadDTO {
     private String ubicacion;    
     private double precio;
     
-    private String checkbox_servicio1;
-    private double input_precio1;
-    private String checkbox_servicio2;
-    private double input_precio2;
-    private String checkbox_servicio3;
-    private double input_precio3;
+    private String opcion1;
+    private double precio1;
+    private String opcion2;
+    private double precio2;
+    private String opcion3;
+    private double precio3;
 
     public PropiedadDTO() {
     }
@@ -45,54 +45,55 @@ public class PropiedadDTO {
 
     public void setPrecio(double precio) {
         this.precio = precio;
-    }     
-    
-    public double getInput_precio1() {
-        return input_precio1;
+    } 
+
+    public String getOpcion1() {
+        return opcion1;
     }
 
-    public void setInput_precio1(double input_precio1) {
-        this.input_precio1 = input_precio1;
-    }
-    
-    public double getInput_precio2() {
-        return input_precio2;
+    public void setOpcion1(String opcion1) {
+        this.opcion1 = opcion1;
     }
 
-    public void setInput_precio2(double input_precio2) {
-        this.input_precio2 = input_precio2;
-    }
-    
-    public double getInput_precio3() {
-        return input_precio3;
+    public double getPrecio1() {
+        return precio1;
     }
 
-    public void setInput_precio3(double input_precio3) {
-        this.input_precio3 = input_precio3;
+    public void setPrecio1(double precio1) {
+        this.precio1 = precio1;
     }
 
-    public String getCheckbox_servicio1() {
-        return checkbox_servicio1;
+    public String getOpcion2() {
+        return opcion2;
     }
 
-    public void setCheckbox_servicio1(String checkbox_servicio1) {
-        this.checkbox_servicio1 = checkbox_servicio1;
+    public void setOpcion2(String opcion2) {
+        this.opcion2 = opcion2;
     }
 
-    public String getCheckbox_servicio2() {
-        return checkbox_servicio2;
+    public double getPrecio2() {
+        return precio2;
     }
 
-    public void setCheckbox_servicio2(String checkbox_servicio2) {
-        this.checkbox_servicio2 = checkbox_servicio2;
+    public void setPrecio2(double precio2) {
+        this.precio2 = precio2;
     }
 
-    public String getCheckbox_servicio3() {
-        return checkbox_servicio3;
+    public String getOpcion3() {
+        return opcion3;
     }
 
-    public void setCheckbox_servicio3(String checkbox_servicio3) {
-        this.checkbox_servicio3 = checkbox_servicio3;
+    public void setOpcion3(String opcion3) {
+        this.opcion3 = opcion3;
     }
+
+    public double getPrecio3() {
+        return precio3;
+    }
+
+    public void setPrecio3(double precio3) {
+        this.precio3 = precio3;
+    }
+     
     
 }

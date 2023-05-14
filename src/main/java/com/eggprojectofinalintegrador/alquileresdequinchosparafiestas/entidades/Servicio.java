@@ -6,10 +6,8 @@
 package com.eggprojectofinalintegrador.alquileresdequinchosparafiestas.entidades;
 
 import javax.persistence.Entity;
-import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
-import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import org.hibernate.annotations.GenericGenerator;
 
@@ -25,15 +23,8 @@ public class Servicio {
     private String idServicio;
     
     private String nombre;
-    private double precio;      
-    
-    /*@ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name="idPropiedad", nullable=false)
-    private Propiedad propiedad;*/ 
-    @ManyToOne(fetch = FetchType.LAZY)    
-    @JoinColumn(name="propiedad_id", nullable=false)
-    private Propiedad propiedad;
-
+    private double precio;     
+        
     public Servicio() {
     }
 
@@ -59,21 +50,5 @@ public class Servicio {
 
     public void setPrecio(double precio) {
         this.precio = precio;
-    }
-
-    public String getIdServicio() {
-        return idServicio;
-    }
-
-    public void setIdServicio(String idServicio) {
-        this.idServicio = idServicio;
-    }
-
-    public Propiedad getPropiedad() {
-        return propiedad;
-    }
-
-    public void setPropiedad(Propiedad propiedad) {
-        this.propiedad = propiedad;
-    }
+    }  
 }

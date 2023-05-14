@@ -67,8 +67,7 @@ public class PortalControlador {
     @PostMapping(value="/registroPropietario")            
     public String registroPropietario(@RequestParam(value = "archivo",required = false) MultipartFile archivo, @ModelAttribute UsuarioDTO usuarioDTO, ModelMap modelo) {
         
-        try{
-            
+        try{            
             userPropietarioServicio.registrarUserPropietario(archivo, usuarioDTO);
             modelo.put("exito","Usuario registrado correctamente");
             
@@ -92,7 +91,7 @@ public class PortalControlador {
         
         return "iniciarSesion.html";
         
-    }  
+    }      
 
     @PreAuthorize("hasAnyRole('ROLE_CLIENTE','ROLE_ADMIN','ROLE_PROPIETARIO')")
     @GetMapping("/inicio")

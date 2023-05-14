@@ -14,7 +14,9 @@ import com.eggprojectofinalintegrador.alquileresdequinchosparafiestas.repositori
 import com.eggprojectofinalintegrador.alquileresdequinchosparafiestas.repositorios.UsuarioRepositorio;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
 import javax.servlet.http.HttpSession;
+import javax.transaction.Transactional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
@@ -24,8 +26,6 @@ import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.context.request.RequestContextHolder;
 import org.springframework.web.context.request.ServletRequestAttributes;
 import org.springframework.web.multipart.MultipartFile;
@@ -45,16 +45,12 @@ public class UserPropietarioServicio extends UsuarioServicio implements UserDeta
 
     @Autowired
     private ImagenServicio imagenServicio;
-
-    /*
-    public void registrarUserPropietario(MultipartFile archivo, String apellido, String nombre, String dni, String email, String telefono, String password, String passwordR) throws MiException{
-        super.registrarUsuario(archivo, Rol.ADMIN, apellido, nombre, dni, email, telefono, telefono, password, passwordR);
-        validar(apellido, nombre, email, telefono, password, passwordR);     
-    */
+    
+    @Transactional
     public void registrarUserPropietario(MultipartFile archivo, UsuarioDTO usuarioDTO) throws MiException{       
         
         validar(usuarioDTO.getPassword(), usuarioDTO.getPasswordR()); 
-        
+                
         UserPropietario uP=new UserPropietario();
         /*USUARIO*/
         uP.setApellido(usuarioDTO.getApellido());        
@@ -72,31 +68,15 @@ public class UserPropietarioServicio extends UsuarioServicio implements UserDeta
         /*PROPIETARIO*/
         uP.setCalificacion(0);        
 
-        userPropietarioRepositorio.save(uP);
-
-    }
-
-    private void autorizarReserva(String idReserva){
-
-    }
+        userPropietarioRepositorio.save(uP);         
+        
+    }   
     
+    public UserPropietario getOne(String id){
+        return userPropietarioRepositorio.getOne(id);
+    }    
     
-    private void validar(String password, String passwordR) throws MiException{
-        /*if(apellido.isEmpty() || apellido==null){
-            throw new MiException("El nombre no puede ser nulo o estar vacio");
-        }        
-        if(nombre.isEmpty() || nombre==null){
-            throw new MiException("El nombre no puede ser nulo o estar vacio");
-        }
-        if(email.isEmpty() || email==null){
-            throw new MiException("El email no puede ser nulo o estar vacio");
-        }
-        if(telefono.isEmpty() || telefono==null){
-            throw new MiException("El telefono no puede ser nulo o estar vacio");
-        }
-        if(password.isEmpty() || password==null || password.length()<=5){
-            throw new MiException("La contraseña no puede ser nulo o estar vacio");
-        }*/       
+    private void validar(String password, String passwordR) throws MiException{         
         if(!password.equals(passwordR)){
             throw new MiException("Las contraseñas no son iguales");
         }
@@ -104,8 +84,6 @@ public class UserPropietarioServicio extends UsuarioServicio implements UserDeta
 
     @Override
     public UserDetails loadUserByUsername(String email) throws UsernameNotFoundException {
-        //throw new UnsupportedOperationException("Not supported yet."); 
-        //To change body of generated methods, choose Tools | Templates.
         Usuario usuario=usuarioRepositorio.buscarPorEmail(email);
         
         if(usuario!=null){
@@ -129,5 +107,5 @@ public class UserPropietarioServicio extends UsuarioServicio implements UserDeta
         }else{
             return null;
         }
-    } 
+    }
 }
